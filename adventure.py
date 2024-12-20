@@ -8,8 +8,11 @@ def start_adventure():
         else:  
             print("Adventure name must be a combination of Characters [a-z] and [A-Z] ")
     story += outcome_name
-    story += "\n"
-    print("Start of story here")
+    story += "\n You will have to answer a series of riddles you have 5 lives. If you answer wrong you will lose one life. Answer carefully \n"
+    print("\n You will have to answer a series of riddles you have 5 lives. If you answer wrong you will lose one life. Answer carefully \n")
+    choice = input("Your in a room and you see a computer in front of you. On the computer you see a riddle. The riddle reads you are in a room with three light switches.\n they control three incandesant light bulbs in another room. \n You can only go over to the room with the bulbs one time you cannot go back and forth. You have to find out what light switch controls what bulb. What do you do? \n 1) Call a friend \n 2) turn one light bulb on and go to room \n 3) turn one light bulb on for 1/2 minutes then turn it off. Proceed to turn a second light on and leave it on.")
+    final_choice = convert_strtoint(choice)
+    print(f"You choose {final_choice}")
     story += "Start of story here\n"
     #Write story here
     return story
