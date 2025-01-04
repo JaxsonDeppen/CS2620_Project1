@@ -99,8 +99,7 @@ def under_ground_town(story,life, coins):
             print(f"\n You enter a blacksmiths shop and ask how much it will cost to mend your gear he says 10 silver coins you have {coins} coins left\n")
             story += f"\n You enter a blacksmiths shop and ask how much it will cost to mend your gear he says 10 silver coins you have {coins} coins left\n"
             if coins >= 10:
-                print("\n As you have enough coins your mend your gear and start to head out of town.\n on the other side of town is a cave entrance. \n You enter and wake for a remarkably long time not seeing anything or anyone.\n")
-                story += "\n As you have enough coins your mend your gear and start to head out of town.\n on the other side of town is a cave entrance. \n You enter and wake for a remarkably long time not seeing anything or anyone.\n"
+                cave(story,coins,life)
             else:
                 print("\nAs you do not have enough coins you go back to the fisherman and take on his job\n")
                 story += "\nAs you do not have enough coins you go back to the fisherman and take on his job\n"
@@ -118,8 +117,89 @@ def fishermans_quest(story, coins,life):
     if choice == "Darkness" or choice == "darkness":
         print("\nYou answered correctly I will leave the fisherman alone from now on.\n")
         story += "\nYou answered correctly I will leave the fisherman alone from now on.\n"
-        print("\nThank you so much you were able to deal with the fish now I can do my job in peace\n")
+        print("\nThank you so much you were able to deal with the fish now I can do my job in peace.\n here is your ten coins.\n")
+        coins += 10
+        cave(story,coins,life)
+    else:
+        print("Game Over you have lost your life to the depths of the lake")
+        story += "Game Over you have lost your life to the depths of the lake"
+        save_story_block(story)
+        menu()
 
+
+def cave(story,coins,life):
+    print("\n As you have enough coins your mend your gear and start to head out of town.\n on the other side of town is a cave entrance. \n You enter and wake for a remarkably long time not seeing anything or anyone.\n")
+    story += "\n As you have enough coins your mend your gear and start to head out of town.\n on the other side of town is a cave entrance. \n You enter and wake for a remarkably long time not seeing anything or anyone.\n"
+    print("\nOut of nowhere you hear a low growl you take your sword out and get prepared to defend yourself.\n It appears to be a pack of wolves they slowly surround you.\n The first strike comes and they all start to pick at you piece by piece.\n Defending yourself with everything you have you keep trying but eventually fall only taking one of the wolves out.\n")
+    story += "\nOut of nowhere you hear a low growl you take your sword out and get prepared to defend yourself.\n It appears to be a pack of wolves they slowly surround you.\n The first strike comes and they all start to pick at you piece by piece.\n Defending yourself with everything you have you keep trying but eventually fall only taking one of the wolves out.\n"
+    print("\nAs you feel your life fading away you see a blinding light and hear someone say if you can answer this riddle correctly I will save your life.\n")
+    story += "\nAs you feel your life fading away you see a blinding light and hear someone say if you can answer this riddle correctly I will save your life.\n"
+    bool2 = False
+    
+    while bool2 is False:
+        choice = input(" If all Wibbles are Criggles, all Borkins are Kwumblins, no Hoggles are Borkins, and all Criggles are Borkins, is it true that all Borkins are Criggles? \n 1) yes \n 2) no")
+        final_choice = convert_strtoint(choice)
+        if final_choice == 2:
+            bool2 = True
+            print("\nYou start to see the light getting closer and closer and the wolves become scared and run away\n")
+            story += "\nYou start to see the light getting closer and closer and the wolves become scared and run away\n"
+            print("\nThe light proceeds to guide you outside of the cave and to safe passage.\n Congratulations you have beat this game thanks for playing!\n")
+            story += "\nThe light proceeds to guide you outside of the cave and to safe passage.\n Congratulations you have beat this game thanks for playing!\n"
+        elif final_choice == 1:
+            bool2 = True
+            print("Game over you lose")
+            save_story_block(story)
+            menu()
+        else:
+            print("must answer 1 or 2 try again")
+            
+    
+
+def bridge_toll(story,coins,life):
+    print("\nYou approacha a bridge there are two men with spears gaurding the entrace.\n They tell you to pay ten coins to pass or leave now\n")
+    story += "\nYou approacha a bridge there are two men with spears gaurding the entrace.\n They tell you to pay ten coins to pass or leave now\n"
+    bool9 = False
+    while bool9 is False:
+        choice = input("Do you pay the ten silver coins? \n 1) yes \n 2) no")
+        final_choice = convert_strtoint(choice)
+        if final_choice == 1:
+            bool9 = True
+            coins -= 10
+            print(f"\nYou know have {coins} coins left you pass over the bridge and start heading to the town\n")
+            story += f"\nYou know have {coins} coins left you pass over the bridge and start heading to the town\n"
+            town_mugging(story,coins,life)
+        elif final_choice == 2:
+            bool9 = True
+            print("\nyou start travelling along the river hoping to find a way over or shelter for the night\n")
+            story += "\nyou start travelling along the river hoping to find a way over or shelter for the night\n"
+            print("\n travelling for a long time along the river and night starts to fall\n")
+            story += "\n travelling for a long time along the river and night starts to fall\n"
+            choice = input("\n 1) do you seek shelter \n 2) keep going")
+            final_choice = convert_strtoint(choice)
+            if final_choice == 1:
+                print("\nyou find a tree and decide to sleep under that\n")
+                story += "you find a tree and decide to sleep under that\n"
+                print("\nThe tree starts to move and you quickly get up out of confusion and fear. \n This is an animal not just a tree \n It start to speak to you answer this riddle to win or die.\n")
+                story += "\nThe tree starts to move and you quickly get up out of confusion and fear. \n This is an animal not just a tree \n It start to speak to you answer this riddle to win or die.\n"
+                choice = input(" I am something people celebrate or resist. I change people’s thoughts and lives. I am obvious to some people but, to others, I am a mystery. What am I?")
+                if choice == "age" or choice == "Age":
+                    print("You win thanks for playing")
+                    save_story_block(story)
+                    menu()
+                else:
+                    print("you die try again later")
+                    save_story_block(story)
+                    menu()
+            elif final_choice == 2:
+                print("\nKeep moving in hopes that you find something better or a way to cross the river\n")
+                story += "\nKeep moving in hopes that you find something better or a way to cross the river\n"
+                print("\nAfter walking so long and not having any food you eventually collapse and pass out\n")
+                story += "\nAfter walking so long and not having any food you eventually collapse and pass out\n"
+                print("Game over")
+                save_story_block(story)
+                menu()
+        else:
+            print("must enter 1 or 2 try again")
 
 
 
@@ -132,6 +212,20 @@ def game_over(life, story):
     else:
         return
         
+def town_mugging(story,coins,life):
+    print("\nYou enter the town and start walking towards the city sqaure.\n")
+    story += "\nYou enter the town and start walking towards the city sqaure.\n"
+    print("\nAs you walk you get cornered by three men with all armed with knifes\n")
+    story += "\nAs you walk you get cornered by three men with all armed with knifes\n"
+    choice = input("\n Answer my riddle correctly or we will kill you\n I can fly but have no wings. I can cry but I have no eyes. Wherever I go, darkness follows me. What am I?")
+    if choice == "Clouds" or choice == "clouds" or choice == "cloud" or choice == "Cloud":
+        print("You won thanks for playing")
+        save_story_block(story)
+        menu()
+    else:
+        print("you lose try again later")
+        save_story_block(story)
+        menu()
 
     
 def save_story_block(story):
