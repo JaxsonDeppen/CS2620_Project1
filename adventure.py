@@ -1,4 +1,4 @@
-print("Welcome to my Adventure Game")
+print(" Welcome to my Adventure Game")
 def start_adventure():
     story = "Adventure name is: "
     while True: 
@@ -11,7 +11,7 @@ def start_adventure():
     story += "\n You are a mercenary you only have 10 silver coins leftover.\n You arent quite sure how you ended up here\n.You will have to answer a series of riddles and you have 5 lives. If you answer wrong you will lose one life. Answer carefully \n"
     print("\n \n You are a mercenary you only have 10 silver coins leftover.\n You arent quite sure how you ended up here\nYou will have to answer a series of riddles you have 5 lives. If you answer wrong you will lose one life. Answer carefully \n")
     story += "Your in a room with two locked doors and a computer. \n the computer has a message on it that reads: \n  I am not alive, but I grow; I don't have lungs, but I need air; I don't have a mouth, but water kills me.\n 1) Fire \n 2) Water"
-    
+    print(story)
     life = 5
     coins = 10
     bool = False
@@ -24,7 +24,7 @@ def start_adventure():
             print(f" \n You choose {final_choice} that was the correct choice go through door 1")
             story += "You go through door one and there is a ladder leading up. When you ascend the ladder you see lush green fields with a river running through it. The sun is starting to go down you have an hour or two of daylight left."
             print("You go through door one and there is a ladder leading up.\n When you ascend the ladder you see lush green fields with a river running through it.\n The sun is starting to go down you have an hour or two of daylight left.")
-        
+            bridge_toll(story,coins,life)
         elif final_choice == 2:
             bool = True
             life -= 1
@@ -47,7 +47,9 @@ def start_adventure():
                 elif final_choice == 2:
                     bool2 = True
                     story += "\nWhat flies when its born, lies when its alive, and runs when its dead? \n1) Grain of sand\n 2) A fire\n 3) a fly \n 4) a snowflake." 
+                    bool3 = False
                     choice = input("\nWhat flies when its born, lies when its alive, and runs when its dead? \n1) Grain of sand\n 2) A fire\n 3) a fly \n 4) a snowflake.")
+                   
                     final_choice = convert_strtoint(choice)
                     while bool3 is False:
                         if final_choice == 4:
@@ -84,6 +86,7 @@ def under_ground_town(story,life, coins):
     story += "\nWould you come with me if you kill the fish I will pay you 20 silver coins?\n 1) yes\n 2) no\n"
     choice = input(("\nWould you come with me if you kill the fish I will pay you 20 silver coins?\n 1) yes\n 2) no\n"))
     final_choice = convert_strtoint(choice)
+    print(story)
     bool = False
     while bool is False:
         if final_choice == 1:
@@ -145,6 +148,8 @@ def cave(story,coins,life):
             story += "\nYou start to see the light getting closer and closer and the wolves become scared and run away\n"
             print("\nThe light proceeds to guide you outside of the cave and to safe passage.\n Congratulations you have beat this game thanks for playing!\n")
             story += "\nThe light proceeds to guide you outside of the cave and to safe passage.\n Congratulations you have beat this game thanks for playing!\n"
+            save_story_block(story)
+            menu()
         elif final_choice == 1:
             bool2 = True
             print("Game over you lose")
